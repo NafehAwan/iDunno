@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You, Computer Teacher!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink: #ff9ec4;
+    --pink-soft: #ffd6e8;
+    --lav: #c8b6ff;
+    --lav-soft: #e5dbff;
+    --mint: #a0e7c5;
+    --peach: #ffcaa0;
+    --cream: #fff6fb;
+    --ink: #6b4a6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    color: var(--ink);
+    background: linear-gradient(160deg, #ffe3f1 0%, #efe4ff 45%, #e2fbef 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
+  }
+
+  /* ---------- floating background shapes ---------- */
+  .sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .float {
+    position: absolute;
+    font-size: 2.2rem;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.85; }
+    90%  { opacity: 0.85; }
+    100% { transform: translateY(-15vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 70px 20px 40px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #fff;
+    border: 3px solid var(--pink-soft);
+    color: var(--pink);
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 18px rgba(255, 158, 196, 0.25);
+    animation: pop 0.8s ease-out both, wobble 3.5s ease-in-out 1s infinite;
+  }
+
+  h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    line-height: 1.1;
+    margin: 22px auto 10px;
+    max-width: 12ch;
+    background: linear-gradient(90deg, #ff7eb3, #b388ff, #6ad7a8, #ffb56b, #ff7eb3);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite, bounceIn 1s ease-out both;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
+    font-weight: 500;
+    color: var(--ink);
+    max-width: 32ch;
+    margin: 0 auto;
+    opacity: 0.85;
+    animation: fadeUp 1s ease-out 0.3s both;
+  }
+
+  .emoji-row {
+    font-size: 2.6rem;
+    margin: 26px 0 8px;
+  }
+  .emoji-row span {
+    display: inline-block;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  .emoji-row span:nth-child(2) { animation-delay: 0.2s; }
+  .emoji-row span:nth-child(3) { animation-delay: 0.4s; }
+  .emoji-row span:nth-child(4) { animation-delay: 0.6s; }
+  .emoji-row span:nth-child(5) { animation-delay: 0.8s; }
+
+  .btn {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--pink), var(--lav));
+    border: none;
+    padding: 16px 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: 18px;
+    box-shadow: 0 12px 24px rgba(200, 130, 220, 0.35);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    animation: pop 0.8s ease-out 0.5s both;
+  }
+  .btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 18px 32px rgba(200,130,220,0.45); }
+  .btn:active { transform: translateY(0) scale(0.97); }
+
+  /* ---------- cards ---------- */
+  .cards {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+    max-width: 980px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+  }
+  .card {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(6px);
+    border: 3px solid #fff;
+    border-radius: 28px;
+    padding: 30px 26px;
+    width: 280px;
+    box-shadow: 0 14px 30px rgba(180, 150, 200, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 22px 40px rgba(180,150,200,0.32); }
+  .card .ico { font-size: 3rem; display: block; margin-bottom: 12px; animation: bob 3s ease-in-out infinite; }
+  .card h3 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.35rem; margin-bottom: 8px; color: var(--pink); }
+  .card p { font-size: 1rem; line-height: 1.5; opacity: 0.8; }
+
+  .card:nth-child(2) h3 { color: var(--lav); }
+  .card:nth-child(3) h3 { color: #4cbf8a; }
+
+  /* ---------- footer heart ---------- */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 20px 20px 60px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+  .big-heart { font-size: 3rem; display: block; margin-bottom: 6px; animation: heartbeat 1.4s ease-in-out infinite; }
+
+  /* ---------- keyframes ---------- */
+  @keyframes shimmer { to { background-position: 300% 0; } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @keyframes wobble { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+  @keyframes heartbeat { 0%,100% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } }
+  @keyframes pop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes bounceIn { 0% { transform: translateY(-40px); opacity: 0; } 60% { transform: translateY(8px); opacity: 1; } 100% { transform: translateY(0); } }
+  @keyframes fadeUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 0.85; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="sky" id="sky"></div>
+
+  <section class="hero">
+    <span class="badge">✨ A little surprise ✨</span>
+    <h1>Thank You, Computer Teacher!</h1>
+    <p class="subtitle">For every lesson, every bug you helped me fix, and every time you believed in me — thank you! 💗</p>
+    <div class="emoji-row"><span>💻</span><span>🌸</span><span>⭐</span><span>🧁</span><span>🎀</span></div>
+    <br />
+    <button class="btn" id="celebrate">Click me for a surprise! 🎉</button>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <span class="ico">🧠</span>
+      <h3>You Taught Me</h3>
+      <p>How computers think, how to code, and how to never give up when something breaks.</p>
+    </div>
+    <div class="card">
+      <span class="ico">🌟</span>
+      <h3>You Inspired Me</h3>
+      <p>Your patience and kindness made every class the best part of my day.</p>
+    </div>
+    <div class="card">
+      <span class="ico">🎈</span>
+      <h3>You're The Best</h3>
+      <p>The coolest, kindest, most awesome computer teacher ever. Truly!</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="big-heart">💖</span>
+    Made with love, just for you.
+  </footer>
+
+<script>
+  // sprinkle floating shapes across the sky
+  const shapes = ['🌸','⭐','💗','🧁','🎀','☁️','✨','🍬','🎈','💜'];
+  const sky = document.getElementById('sky');
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement('div');
+    s.className = 'float';
+    s.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = (1.4 + Math.random() * 2) + 'rem';
+    s.style.animationDuration = (9 + Math.random() * 10) + 's';
+    s.style.animationDelay = (Math.random() * 12) + 's';
+    sky.appendChild(s);
+  }
+
+  // confetti burst on button click
+  const btn = document.getElementById('celebrate');
+  const confettiEmojis = ['🎉','🎊','💖','⭐','🌸','🧁','✨','🎀'];
+  btn.addEventListener('click', () => {
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('div');
+      c.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+      c.style.position = 'fixed';
+      c.style.left = '50%';
+      c.style.top = '55%';
+      c.style.fontSize = (1 + Math.random() * 1.6) + 'rem';
+      c.style.zIndex = 9999;
+      c.style.pointerEvents = 'none';
+      document.body.appendChild(c);
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 120 + Math.random() * 280;
+      const dx = Math.cos(angle) * dist;
+      const dy = Math.sin(angle) * dist - 120;
+      c.animate([
+        { transform: 'translate(-50%,-50%) rotate(0deg)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${Math.random()*720-360}deg)`, opacity: 0 }
+      ], { duration: 1100 + Math.random() * 700, easing: 'cubic-bezier(.2,.8,.3,1)' })
+        .onfinish = () => c.remove();
+    }
+    btn.textContent = 'Yay! You did it! 💕';
+    setTimeout(() => { btn.textContent = 'Click me again! 🎉'; }, 1800);
+  });
+</script>
+</body>
+</html>

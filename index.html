@@ -47,13 +47,6 @@
   .term-body .k{color:#ff9ec9}.term-body .s{color:#a6e3a1}.term-body .c{color:#7d7399}
   .cursor{display:inline-block;width:9px;height:1.05em;background:#ff9ec9;vertical-align:-2px;animation:blink 1s steps(1) infinite;margin-left:2px}
   @keyframes blink{50%{opacity:0}}
-  .skip{
-    position:fixed;bottom:20px;right:22px;z-index:51;font-family:'JetBrains Mono',monospace;
-    font-size:.78rem;color:#6f6690;background:transparent;border:1px solid #37305a;
-    padding:7px 14px;border-radius:999px;cursor:pointer;transition:.2s;
-  }
-  .skip:hover{color:#cbb9ff;border-color:#6f5fb0}
-
   /* ===================== FLOATING SKY ===================== */
   .sky{position:fixed;inset:0;pointer-events:none;z-index:0}
   .float{position:absolute;opacity:.8;animation:floatUp linear infinite;filter:drop-shadow(0 4px 6px rgba(0,0,0,.06))}
@@ -160,8 +153,6 @@
       <div class="term-body" id="termBody"></div>
     </div>
   </div>
-  <button class="skip" id="skipBtn">skip intro →</button>
-
   <!-- ============ FLOATING SKY ============ -->
   <div class="sky" id="sky"></div>
 
@@ -233,11 +224,11 @@
 <script>
   /* ---------- BOOT TERMINAL TYPEWRITER ---------- */
   const lines = [
-    {t:'<span class="c">$</span> loading gratitude.exe ...', d:26},
-    {t:'<span class="c">></span> <span class="k">import</span> respect, kindness, patience', d:26},
-    {t:'<span class="c">></span> teacher = <span class="s">"Mam Saba"</span>', d:26},
-    {t:'<span class="c">></span> compiling surprise ', d:26, dots:true},
-    {t:'<span class="s">✔ build successful!</span> opening... 💗', d:30},
+    {t:'<span class="c">$</span> loading gratitude.exe ...', d:70},
+    {t:'<span class="c">></span> <span class="k">import</span> respect, kindness, patience', d:70},
+    {t:'<span class="c">></span> teacher = <span class="s">"Mam Saba"</span>', d:70},
+    {t:'<span class="c">></span> compiling surprise ', d:70, dots:true},
+    {t:'<span class="s">✔ build successful!</span> opening... 💗', d:80},
   ];
   const termBody = document.getElementById('termBody');
   let li = 0, done = false;
@@ -261,7 +252,7 @@
       else {
         p.innerHTML = plain + '<span class="cursor"></span>';
         li++;
-        setTimeout(typeLine, line.dots ? 620 : 340);
+        setTimeout(typeLine, line.dots ? 1100 : 620);
       }
     })();
   }
@@ -270,10 +261,8 @@
   function finishBoot(){
     if(done) return; done = true;
     document.getElementById('boot').classList.add('gone');
-    document.getElementById('skipBtn').style.display='none';
     setTimeout(()=>{ document.getElementById('scene').classList.add('show'); }, 500);
   }
-  document.getElementById('skipBtn').addEventListener('click', finishBoot);
 
   /* ---------- FLOATING SKY ---------- */
   const shapes=['🌸','⭐','💗','🧁','🎀','☁️','✨','🍬','🎈','💜','🦄'];

@@ -163,7 +163,7 @@
       <p class="hello">Goodbye isn't easy… so here's a little surprise for</p>
       <h1>Mam Saba</h1>
       <div class="name-underline"></div>
-      <p class="subtitle">Two years ago you walked into our 8th-grade class — and computers were never boring again. Thank you for everything. 💗</p>
+      <p class="subtitle">Two years ago you walked into our 8th-grade class — and computers were never boring again. Thank you for everything. 🌸</p>
 
       <div class="gift-wrap">
         <div class="gift" id="gift" title="Open me!">
@@ -265,7 +265,7 @@
   }
 
   /* ---------- FLOATING SKY ---------- */
-  const shapes=['🌸','⭐','💗','🧁','🎀','☁️','✨','🍬','🎈','💜','🦄'];
+  const shapes=['🌸','⭐','🧁','🎀','☁️','✨','🍬','🎈','🦄','🌷'];
   const sky=document.getElementById('sky');
   for(let i=0;i<24;i++){
     const s=document.createElement('div');s.className='float';
@@ -284,7 +284,7 @@
   gift.addEventListener('click',()=>{
     if(opened) return; opened=true;
     gift.classList.add('open');
-    document.getElementById('tapHint').textContent='💕 for you, Mam Saba 💕';
+    document.getElementById('tapHint').textContent='for you, Mam Saba ✨';
     burst(gift);
     setTimeout(()=>{
       reveal.classList.add('open');
@@ -302,7 +302,7 @@
   },2600);
 
   /* ---------- CONFETTI ---------- */
-  const emojis=['🎉','🎊','💖','⭐','🌸','🧁','✨','🎀','💜'];
+  const emojis=['🎉','🎊','⭐','🌸','🧁','✨','🎀','💫'];
   function burst(fromEl){
     const rect=fromEl?fromEl.getBoundingClientRect():{left:innerWidth/2,top:innerHeight/2,width:0,height:0};
     const ox=rect.left+rect.width/2, oy=rect.top+rect.height/2;
@@ -320,31 +320,31 @@
   }
   document.getElementById('confettiBtn').addEventListener('click',e=>{
     burst(e.currentTarget);
-    e.currentTarget.textContent='Yay! 💕';
+    e.currentTarget.textContent='Yay! 🎊';
     setTimeout(()=>e.currentTarget.textContent='Again! 🎉',1600);
   });
 
-  /* ---------- CLICK-ANYWHERE HEARTS ---------- */
+  /* ---------- CLICK-ANYWHERE SPARKLES ---------- */
   document.addEventListener('click',e=>{
     if(!document.getElementById('scene').classList.contains('show')) return;
     const h=document.createElement('div');
-    h.textContent=['💗','💜','💖','🌸','✨'][Math.floor(Math.random()*5)];
+    h.textContent=['✨','🌸','⭐','🎀'][Math.floor(Math.random()*4)];
     h.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;font-size:1.4rem;z-index:9998;pointer-events:none;transform:translate(-50%,-50%)';
     document.body.appendChild(h);
     h.animate([{transform:'translate(-50%,-50%) scale(.6)',opacity:1},
       {transform:'translate(-50%,-140%) scale(1.3)',opacity:0}],{duration:900,easing:'ease-out'}).onfinish=()=>h.remove();
   });
 
-  /* ---------- HEART CURSOR TRAIL ---------- */
+  /* ---------- SUBTLE SPARKLE CURSOR TRAIL ---------- */
   let lastTrail=0;
   document.addEventListener('mousemove',e=>{
-    const now=Date.now(); if(now-lastTrail<70) return; lastTrail=now;
+    const now=Date.now(); if(now-lastTrail<200) return; lastTrail=now;
     const t=document.createElement('div');
-    t.textContent='💗';
-    t.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;font-size:'+(0.7+Math.random()*0.5)+'rem;z-index:9997;pointer-events:none;transform:translate(-50%,-50%)';
+    t.textContent='✨';
+    t.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;font-size:'+(0.6+Math.random()*0.4)+'rem;z-index:9997;pointer-events:none;transform:translate(-50%,-50%);opacity:.7';
     document.body.appendChild(t);
-    t.animate([{opacity:.9,transform:'translate(-50%,-50%) scale(1)'},
-      {opacity:0,transform:'translate(-50%,-50%) scale(.3)'}],{duration:700,easing:'ease-out'}).onfinish=()=>t.remove();
+    t.animate([{opacity:.7,transform:'translate(-50%,-50%) scale(1)'},
+      {opacity:0,transform:'translate(-50%,-50%) scale(.3)'}],{duration:600,easing:'ease-out'}).onfinish=()=>t.remove();
   });
 
   /* ---------- SECRET EASTER EGG: type "saba" ---------- */
